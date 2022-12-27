@@ -1,0 +1,8 @@
+{
+    "consumer_key": "xxx",
+    "consumer_secret": "xxx",
+    "access_token_default": "yyy",
+    "access_secret_default": "yyy",
+    "access_token": "",
+    "access_secret": ""
+}
