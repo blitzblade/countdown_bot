@@ -37,6 +37,6 @@ def count_down(data, today=None):
     if date.today() == datetime.strptime(data["target_date"], '%Y-%m-%d'):
         return data, f"{data['tweep']} {data['action']} today!"
     else:
-        message = f"{data['days_left']} more till {data['tweep']} {data['action']}"
+        message = f"{data['days_left']} days more till {data['tweep']} {data['action']}"
         data["days_left"] -= 1
         return data, message
