@@ -1,14 +1,19 @@
 from datetime import date, datetime, timedelta
 
+from logger_tool import Logger
+
 
 def calculate_days_left(end_date: str, today=None):
-    today = date.today() if today is None else today
+    today = datetime.today() if today is None else today
     future = datetime.strptime(end_date, '%Y-%m-%d')
-    return (future - today).days
+    days = (future - today).days
+
+    print("Days: ", days)
+    return days
 
 
 def calculate_target_date(days: int, today=None):
-    today = date.today() if today is None else today
+    today = datetime.today() if today is None else today
     future = today + timedelta(days=days)
     return future.strftime("%Y-%m-%d")
 

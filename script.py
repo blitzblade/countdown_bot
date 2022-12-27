@@ -4,6 +4,7 @@ from functions import count_down
 from logger_tool import Logger
 
 config = load_config()
+#config = load_config(file="_config.json")
 
 consumer_key = config['consumer_key']
 consumer_secret = config['consumer_secret']
