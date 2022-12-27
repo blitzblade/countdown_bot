@@ -29,7 +29,8 @@ if __name__ == '__main__':
         data, message = count_down(data)
         Logger.info(f"DATA: {data}")
         Logger.info("Message: ", message)
-        api.update_status(message)
+        if message:
+            api.update_status(message)
         save_config(data, "data.json")
     except Exception as e:
         print_err(e)

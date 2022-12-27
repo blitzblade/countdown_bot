@@ -80,3 +80,15 @@ def test_count_down_timeup():
     d, m = count_down(data, today=today)
 
     assert m == "@kwesi_dadson leaves Twitter today!"
+
+
+def test_count_down_late():
+    data = {
+        "days_left": None,
+        "target_date": "2022-12-30",
+        "action": "leaves Twitter",
+        "tweep": "@kwesi_dadson"
+    }
+    d, m = count_down(data, today=today)
+
+    assert m == None

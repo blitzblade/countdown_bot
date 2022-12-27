@@ -34,12 +34,16 @@ def clean_data(data, today=None):
 
 def count_down(data, today=None):
     data = clean_data(data, today=today)
-
     Logger.info(data)
+
     today = date.today() if today is None else today
-    if today.strftime('%Y-%m-%d') == data["target_date"]:
-        return data, f"{data['tweep']} {data['action']} today!"
+
+    if data["days_left"] < 0:
+        message = None
+    elif data["days_left"] == 0:
+        message = f"{data['tweep']} {data['action']} today!"
     else:
         message = f"{data['days_left']} days more till {data['tweep']} {data['action']}"
-        data["days_left"] = data["days_left"] - 1
-        return data, message
+
+    data["days_left"] = data["days_left"] - 1
+    return data, message
