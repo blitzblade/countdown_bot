@@ -1,9 +1,9 @@
 import pytest
-from datetime import datetime
+from datetime import datetime, date
 
 from functions import calculate_days_left, calculate_target_date, clean_data, count_down
 
-today = datetime(2023, 1, 1)
+today = date(2023, 1, 1)
 
 
 def test_calculate_days_left():
@@ -59,12 +59,24 @@ def test_clean_data_no_target_date():
 
 def test_count_down():
     data = {
-        "days_left": 4,
-        "target_date": "2023-01-05",
+        "days_left": None,
+        "target_date": "2023-01-04",
+        "action": "leaves Twitter",
+        "tweep": "@kwesi_dadson"
+    }
+    d, m = count_down(data, today=date(2022, 12, 27))
+
+    assert d["days_left"] == 7
+    assert m == "8 days more till @kwesi_dadson leaves Twitter"
+
+
+def test_count_down_timeup():
+    data = {
+        "days_left": None,
+        "target_date": "2023-01-01",
         "action": "leaves Twitter",
         "tweep": "@kwesi_dadson"
     }
     d, m = count_down(data, today=today)
 
-    assert d["days_left"] == 3
-    assert m == "4 more till @kwesi_dadson leaves Twitter"
+    assert m == "@kwesi_dadson leaves Twitter today!"

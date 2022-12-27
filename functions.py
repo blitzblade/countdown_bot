@@ -4,16 +4,16 @@ from logger_tool import Logger
 
 
 def calculate_days_left(end_date: str, today=None):
-    today = datetime.today() if today is None else today
+    today = date.today() if today is None else today
     future = datetime.strptime(end_date, '%Y-%m-%d')
-    days = (future - today).days
+    days = (future.date() - today).days
 
     print("Days: ", days)
     return days
 
 
 def calculate_target_date(days: int, today=None):
-    today = datetime.today() if today is None else today
+    today = date.today() if today is None else today
     future = today + timedelta(days=days)
     return future.strftime("%Y-%m-%d")
 
@@ -34,9 +34,12 @@ def clean_data(data, today=None):
 
 def count_down(data, today=None):
     data = clean_data(data, today=today)
-    if date.today() == datetime.strptime(data["target_date"], '%Y-%m-%d'):
+
+    Logger.info(data)
+    today = date.today() if today is None else today
+    if today.strftime('%Y-%m-%d') == data["target_date"]:
         return data, f"{data['tweep']} {data['action']} today!"
     else:
         message = f"{data['days_left']} days more till {data['tweep']} {data['action']}"
-        data["days_left"] -= 1
+        data["days_left"] = data["days_left"] - 1
         return data, message
