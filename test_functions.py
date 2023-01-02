@@ -92,3 +92,15 @@ def test_count_down_late():
     d, m = count_down(data, today=today)
 
     assert m == None
+
+
+def test_count_down_1_day():
+    data = {
+        "days_left": 1,
+        "target_date": None,
+        "action": "leaves Twitter",
+        "tweep": "@kwesi_dadson"
+    }
+    d, m = count_down(data, today=today)
+
+    assert m == "1 day more till @kwesi_dadson leaves Twitter"

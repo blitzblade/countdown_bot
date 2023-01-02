@@ -43,7 +43,8 @@ def count_down(data, today=None):
     elif data["days_left"] == 0:
         message = f"{data['tweep']} {data['action']} today!"
     else:
-        message = f"{data['days_left']} days more till {data['tweep']} {data['action']}"
+        days = "days" if data["days_left"] > 1 else "day"
+        message = f"{data['days_left']} {days} more till {data['tweep']} {data['action']}"
 
     data["days_left"] = data["days_left"] - 1
     return data, message
