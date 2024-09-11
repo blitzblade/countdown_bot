@@ -11,7 +11,6 @@ consumer_secret = config['consumer_secret']
 access_token = config['access_token']
 
 access_secret = config['access_secret']
-
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 
 '''
