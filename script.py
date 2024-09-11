@@ -19,7 +19,6 @@ Access Token:
 Access Token Secret:
 '''
 
-
 auth.set_access_token(access_token, access_secret)
 api = tweepy.API(auth)
 
